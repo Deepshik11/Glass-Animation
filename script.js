@@ -1,4 +1,21 @@
+
+let scrollAnimation1;
+let scrollAnimation2;
+
+function clearAllAnimations() {
+    if (scrollAnimation1) {
+        clearInterval(scrollAnimation1);
+        scrollAnimation1 = null;
+    }
+    if (scrollAnimation2) {
+        clearInterval(scrollAnimation2);
+        scrollAnimation2 = null;
+    }
+}
+
 document.getElementById("scrollButton").addEventListener("click", function () {
+
+    clearAllAnimations();
 
     const scrollStep = 2;
     const scrollInterval = 10;
@@ -11,31 +28,34 @@ document.getElementById("scrollButton").addEventListener("click", function () {
 
         if (currentPosition >= targetPosition) {
             clearInterval(scrollAnimation1);
+            scrollAnimation1 = null;
+            document.getElementById("scrollButton").src = "Images/arrow_big-01.png"
+            document.getElementById("scrollButton2").src = "Images/arrow_big-02.png"
         }
     }, scrollInterval);
 });
 
-document.getElementById("stop2").addEventListener("click", function () {
-    if (scrollAnimation1) {
-        clearInterval(scrollAnimation1);
-        scrollAnimation1 = null;
-    }
-});
-let scrollAnimation1
-let scrollAnimation;
 
+document.getElementById("stop2").addEventListener("click", function () {
+    clearAllAnimations();
+});
 document.getElementById("scrollButton2").addEventListener("click", function () {
+
+    clearAllAnimations();
+
     const scrollStep = 2;
     const scrollInterval = 10;
-    const targetPosition = document.documentElement.scrollWidth - window.innerWidth;
-
+    const targetPosition = 0; 
     let currentPosition = window.scrollX;
-    scrollAnimation = setInterval(function () {
+    scrollAnimation2 = setInterval(function () {
         currentPosition -= scrollStep;
         window.scrollTo(currentPosition, 0);
 
-        if (currentPosition >= targetPosition) {
-            clearInterval(scrollAnimation);
+        if (currentPosition <= targetPosition) {
+            clearInterval(scrollAnimation2);
+            scrollAnimation2 = null;
+            document.getElementById("scrollButton2").src = "Images/arrow_big-02.png"
+            document.getElementById("scrollButton").src = "Images/arrow_big-01.png"
         }
     }, scrollInterval);
 });
