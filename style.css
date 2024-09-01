@@ -13,7 +13,7 @@
   --organge: linear-gradient(90deg, rgba(236, 99, 26, 0.9) 0%, rgba(236, 99, 26, 0.7) 20%, rgba(236, 99, 26, 0.5) 40%, rgba(236, 99, 26, 0.25) 60%, rgba(236, 99, 26, 0.1) 100%);
   --yellow: linear-gradient(90deg, rgba(250, 255, 30, 0.9) 0%, rgba(250, 255, 30, 0.7) 20%, rgba(250, 255, 30, 0.5) 40%, rgba(250, 255, 30, 0.25) 60%, rgba(250, 255, 30, 0.1) 100%);
   --sky: linear-gradient(90deg, rgba(72, 216, 249, 0.9) 0%, rgba(72, 216, 249, 0.7) 20%, rgba(72, 216, 249, 0.5) 40%, rgba(72, 216, 249, 0.25) 60%, rgba(72, 216, 249, 0.1) 100%);
-  --mix: linear-gradient(90deg, rgba(131, 58, 180, 0.9) 0%, rgba(192, 44, 105, 0.7) 25%, rgba(253, 29, 29, 0.5) 50%, rgba(253, 88, 45, 0.25) 70%, rgba(252, 176, 69, 0.1) 100%);
+  --tertiary: linear-gradient(90deg, rgba(131, 58, 180, 0.9) 0%, rgba(192, 44, 105, 0.7) 25%, rgba(253, 29, 29, 0.5) 50%, rgba(253, 88, 45, 0.25) 70%, rgba(252, 176, 69, 0.1) 100%);
   --violet: linear-gradient(90deg, rgba(89, 3, 158, 0.9) 0%, rgba(89, 3, 158, 0.7) 20%, rgba(89, 3, 158, 0.5) 40%, rgba(89, 3, 158, 0.25) 60%, rgba(89, 3, 158, 0.1) 100%);
 }
 
@@ -23,6 +23,61 @@
 
 .red {
   background: var(--red);
+}
+
+.stop{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 45px;
+  color: white;
+  /* background: var(--gray); */
+  border: 1px solid white;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: sans-serif;
+  cursor: pointer;
+  margin-left: 300px;
+  border-radius: 24px;
+  transition: background .5s ease, color .5s ease;
+  padding: 0 18px;
+}
+
+.stop:hover {
+  scale: 1.1;
+  transition: .2s;
+}
+
+.scrollButton4 {
+  background-image: url('Images/arrow_big-01_hover.png');
+}
+
+.scrollButton3:hover {
+  background-image: url('Images/arrow_big-01_hover.png');
+}
+
+.stop1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 45px;
+  color: white;
+  border-radius: 24px;
+  /* background: var(--gray); */
+  border: 1px solid white;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: sans-serif;
+  cursor: pointer;
+  margin-right: 300px;
+  padding: 0 18px;
+}
+
+.stop1:hover {
+  scale: 1.1;
+  transition: .2s;
 }
 
 .pink {
@@ -41,19 +96,20 @@
   background: var(--yellow);
 }
 
-.sky {
+.skyblue {
   background: var(--sky);
 }
 
-.mix {
-  background: var(--mix);
+.tertiary {
+  background: var(--tertiary);
 }
 
 .violet {
   background: var(--violet);
 }
-.gray{
-  background:var(--gray) ;
+
+.gray {
+  background: var(--gray);
 }
 
 body {
@@ -71,23 +127,26 @@ body {
   display: flex;
   position: fixed;
   top: 20px;
-  right: 50px;
+  left: 10%;
   column-gap: 24px;
   align-items: center;
   justify-content: center;
 }
-#change{
- width: 150px;
- height: 40px;
- font-size: 18px;
- font-family: sans-serif;
- font-weight: 500;
- background-color: black;
- border: 2px solid white;
- color: white;
-border-radius: 24px;
-/* cursor: pointer; */
+
+#change {
+  width: 150px;
+  height: 45px;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 500;
+  padding: 0 18px;
+  /* background-color: black; */
+  border: 2px solid white;
+  color: white;
+  border-radius: 24px;
+  /* cursor: pointer; */
 }
+
 /* #change:hover{
   color: black;
   background-color: white;
@@ -118,6 +177,7 @@ border-radius: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 50%;
   gap: 20px;
 }
 
@@ -146,12 +206,12 @@ border-radius: 24px;
 }
 
 .cube:nth-child(odd) {
-  margin-top: 6%;
+  margin-top: 7%;
   perspective-origin: center -140px;
 }
 
 .cube:nth-child(even) {
-  margin-top: -6%;
+  margin-top: -5%;
   perspective-origin: center 100px;
 }
 
@@ -185,14 +245,14 @@ border-radius: 24px;
 
 .scrollButton2 {
   position: fixed;
-  top: 47%;
+  top: 52%;
   left: 20px;
   z-index: 100;
 }
 
 .scrollButton {
   position: fixed;
-  top: 48%;
+  top: 53%;
   right: 20px;
   z-index: 100;
 }
