@@ -6,10 +6,14 @@ function clearAllAnimations() {
     if (scrollAnimation1) {
         clearInterval(scrollAnimation1);
         scrollAnimation1 = null;
+        document.getElementById("scrollButton").src = "Images/arrow_big-01.png"
+        document.getElementById("scrollButton2").src = "Images/arrow_big-02.png"
     }
     if (scrollAnimation2) {
         clearInterval(scrollAnimation2);
         scrollAnimation2 = null;
+        document.getElementById("scrollButton").src = "Images/arrow_big-01.png"
+        document.getElementById("scrollButton2").src = "Images/arrow_big-02.png"
     }
 }
 
@@ -45,7 +49,7 @@ document.getElementById("scrollButton2").addEventListener("click", function () {
 
     const scrollStep = 2;
     const scrollInterval = 10;
-    const targetPosition = 0; 
+    const targetPosition = 0;
     let currentPosition = window.scrollX;
     scrollAnimation2 = setInterval(function () {
         currentPosition -= scrollStep;
@@ -104,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggle1 = document.getElementById("change")
     const container = document.querySelectorAll(".face");
     const stop1 = document.getElementById("stop2")
-    const stop2=document.getElementById("stop1")
+    const stop2 = document.getElementById("stop1")
     const colors = ['blue', 'red', 'pink', 'green', 'orange', 'yellow', 'skyblue', 'violet', 'tertiary'];
     let cindex = 0;
     let previousColor = 0;
