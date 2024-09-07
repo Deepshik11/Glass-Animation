@@ -1,114 +1,72 @@
 
-let scrollAnimation1;
-let scrollAnimation2;
-
-function clearAllAnimations() {
-    if (scrollAnimation1) {
-        clearInterval(scrollAnimation1);
-        scrollAnimation1 = null;
-        document.getElementById("scrollButton").src = "Images/arrow_big-01.png"
-        document.getElementById("scrollButton2").src = "Images/arrow_big-02.png"
-    }
-    if (scrollAnimation2) {
-        clearInterval(scrollAnimation2);
-        scrollAnimation2 = null;
-        document.getElementById("scrollButton").src = "Images/arrow_big-01.png"
-        document.getElementById("scrollButton2").src = "Images/arrow_big-02.png"
-    }
-}
-
-document.getElementById("scrollButton").addEventListener("click", function () {
-
-    clearAllAnimations();
-
-    const scrollStep = 2;
-    const scrollInterval = 10;
-    const targetPosition = document.documentElement.scrollWidth - window.innerWidth;
-
-    let currentPosition = window.scrollX;
-    scrollAnimation1 = setInterval(function () {
-        currentPosition += scrollStep;
-        window.scrollTo(currentPosition, 0);
-
-        if (currentPosition >= targetPosition) {
-            clearInterval(scrollAnimation1);
-            scrollAnimation1 = null;
-            document.getElementById("scrollButton").src = "Images/arrow_big-01.png"
-            document.getElementById("scrollButton2").src = "Images/arrow_big-02.png"
-        }
-    }, scrollInterval);
-});
-
-
-document.getElementById("stop2").addEventListener("click", function () {
-    clearAllAnimations();
-});
-document.getElementById("scrollButton2").addEventListener("click", function () {
-
-    clearAllAnimations();
-
-    const scrollStep = 2;
-    const scrollInterval = 10;
-    const targetPosition = 0;
-    let currentPosition = window.scrollX;
-    scrollAnimation2 = setInterval(function () {
-        currentPosition -= scrollStep;
-        window.scrollTo(currentPosition, 0);
-
-        if (currentPosition <= targetPosition) {
-            clearInterval(scrollAnimation2);
-            scrollAnimation2 = null;
-            document.getElementById("scrollButton2").src = "Images/arrow_big-02.png"
-            document.getElementById("scrollButton").src = "Images/arrow_big-01.png"
-        }
-    }, scrollInterval);
-});
-
-document.getElementById("stop1").addEventListener("click", function () {
-    if (scrollAnimation) {
-        clearInterval(scrollAnimation);
-        scrollAnimation = null;
-    }
-});
-
-
-// ----------image change-----------
-document.getElementById("scrollButton").addEventListener("click", function () {
-    this.src = "Images/arrow_big-01_hover.png"
-});
-document.getElementById("stop2").addEventListener("click", function () {
-    document.getElementById("scrollButton").src = "Images/arrow_big-01.png"
-});
-document.getElementById("scrollButton2").addEventListener("click", function () {
-    this.src = "Images/arrow_big-02_hover.png"
-});
-
-document.getElementById("stop1").addEventListener("click", function () {
-    document.getElementById("scrollButton2").src = "Images/arrow_big-02.png"
-});
-
-document.getElementById("scrollButton3").addEventListener("mouseover", function () {
-    this.src = "Images/Untitled design (1).png"
-});
-document.getElementById("scrollButton3").addEventListener("mouseout", function () {
-    this.src = "Images/arrow_big-02.png"
-});
-document.getElementById("scrollButton4").addEventListener("mouseover", function () {
-    this.src = "Images/Untitled design.png"
-});
-document.getElementById("scrollButton4").addEventListener("mouseout", function () {
-    this.src = "Images/arrow_big-01.png"
-});
-
 
 // -----------color change---
 document.addEventListener("DOMContentLoaded", () => {
+
+
+    let scrollButton1 = document.getElementById("scrollButton");
+    let scrollButton2 = document.getElementById("scrollButton2");
+    let stopButton = document.getElementById("stop2");
+    let scrollInterval;
+
+    function stopScrolling() {
+        if (scrollInterval) {
+            clearInterval(scrollInterval);
+            scrollInterval = null;
+            scrollButton1.src = "Images/arrow_big-01.png"
+            scrollButton2.src = "Images/arrow_big-02.png"
+        }
+    }
+
+    // Function to scroll right
+    function scrollRight() {
+        stopScrolling();
+        scrollInterval = setInterval(() => {
+
+            if (window.innerWidth + window.scrollX >= document.documentElement.scrollWidth - 10) {
+                window.scrollTo(0, window.scrollY);
+            } else {
+                window.scrollBy(5, 0);
+            }
+        }, 50);
+        this.src = "Images/arrow_big-01_hover.png"
+    }
+
+    // Function to scroll left
+
+    function scrollLeft() {
+        stopScrolling();
+        scrollInterval = setInterval(() => {
+            if (window.scrollX <= 0) {
+                window.scrollTo(document.documentElement.scrollWidth - window.innerWidth, window.scrollY); // Reset scroll to the end
+            } else {
+                window.scrollBy(-5, 0);
+            }
+        }, 50);
+        this.src = "Images/arrow_big-02_hover.png"
+    }
+
+    // Start scrolling right
+    scrollButton1.addEventListener("click", scrollRight);
+
+    // Start scrolling left
+    scrollButton2.addEventListener("click", scrollLeft);
+
+    // Stop scrolling
+    stopButton.addEventListener("click", () => {
+        stopScrolling();
+    });
+
+
+
+
+    // ----------image change-----------
+
     const toggle = document.getElementById("scrollButton4");
     const toggle2 = document.getElementById("scrollButton3");
     const toggle1 = document.getElementById("change")
     const container = document.querySelectorAll(".face");
     const stop1 = document.getElementById("stop2")
-    const stop2 = document.getElementById("stop1")
     const colors = ['blue', 'red', 'pink', 'green', 'orange', 'yellow', 'skyblue', 'violet', 'tertiary'];
     let cindex = 0;
     let previousColor = 0;
@@ -118,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
         toggle1.innerHTML = "Default"
     });
     stop1.classList.add('gray');
-    stop2.classList.add('gray');
+
     toggle1.classList.add('gray');
 
     toggle2.addEventListener('click', () => {
@@ -127,9 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         stop1.classList.remove('gray')
         stop1.classList.remove(colors[cindex]);
-
-        stop2.classList.remove('gray')
-        stop2.classList.remove(colors[cindex]);
 
         toggle1.classList.remove('gray')
         toggle1.classList.remove(colors[cindex]);
@@ -142,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         stop1.classList.add(previousColor);
-        stop2.classList.add(previousColor);
         toggle1.classList.add(previousColor);
 
         toggle1.innerHTML = previousColor.charAt(0).toUpperCase() + previousColor.slice(1);
@@ -162,9 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
         stop1.classList.remove('gray');
         stop1.classList.remove(colors[cindex]);
 
-        stop2.classList.remove('gray');
-        stop2.classList.remove(colors[cindex]);
-
         toggle1.classList.remove('gray');
         toggle1.classList.remove(colors[cindex]);
 
@@ -173,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
             face.classList.add(colors[cindex]);
         });
         stop1.classList.add(colors[cindex]);
-        stop2.classList.add(colors[cindex]);
         toggle1.classList.add(colors[cindex]);
 
         toggle1.innerHTML = colors[cindex].charAt(0).toUpperCase() + colors[cindex].slice(1);
