@@ -60,18 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     stop1.classList.add('gray');
     toggle1.classList.add('gray');
-    toggle2.addEventListener('mouseenter', () => {
-        toggle2.src = "Images/arrow_big-02_hover.png"
-    })
-    toggle.addEventListener('mouseenter', () => {
-        toggle.src = "Images/arrow_big-01_hover.png"
-    })
-    toggle2.addEventListener('mouseleave', () => {
-        toggle2.src = "Images/arrow_big-02.png"
-    })
-    toggle.addEventListener('mouseleave', () => {
-        toggle.src = "Images/arrow_big-01.png"
-    })
+  
     toggle2.addEventListener('click', () => {
         container.forEach(face => {
             face.classList.remove(colors[cindex]);
@@ -94,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         toggle1.innerHTML = previousColor.charAt(0).toUpperCase() + previousColor.slice(1);
     });
+    
     toggle.addEventListener('click', () => {
         if (colors[0]) {
             toggle1.innerHTML = "Blue"
@@ -118,5 +108,19 @@ document.addEventListener("DOMContentLoaded", () => {
         toggle1.classList.add(colors[cindex]);
         toggle1.innerHTML = colors[cindex].charAt(0).toUpperCase() + colors[cindex].slice(1);
     });
+
+    // -------image change ---
+    toggle2.addEventListener('mouseenter', () => {
+        toggle2.src = "Images/arrow_big-02_hover.png"
+    })
+    toggle.addEventListener('mouseenter', () => {
+        toggle.src = "Images/arrow_big-01_hover.png"
+    })
+    toggle2.addEventListener('mouseleave', () => {
+        toggle2.src = "Images/arrow_big-02.png"
+    })
+    toggle.addEventListener('mouseleave', () => {
+        toggle.src = "Images/arrow_big-01.png"
+    })
 
 });
