@@ -287,3 +287,51 @@ body::-webkit-scrollbar {
   transform-origin: bottom;
   transform: rotateX(-90deg);
 }
+@media (max-width: 900px){
+  .color-palet{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+    z-index: 1000;
+  }
+  .scrollButton,.scrollButton2,.stop,.text-contend{
+    display: none;
+  }
+  body{
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.cube:nth-child(odd){
+  margin-top: 10px;
+}
+.cube:nth-child(even) {
+  margin-top: 100px;
+}
+.cube{
+    animation: side-mobile-even 3s ease both;
+      animation-timeline: view(y);
+}
+@keyframes side-mobile-even {
+  0% {
+    transform: rotate3d(0, 1, 0, -10deg) scale3d(1, 1, 9);
+  }
+
+  45% {
+    transform: rotate3d(0, 1, 0, 0deg) scale3d(1, 1, 10);
+  }
+
+  55% {
+    transform: rotate3d(0, 1, 0, 0deg) scale3d(1, 1, 10);
+  }
+
+  100% {
+    transform: rotate3d(0, 1, 0, -10deg) scale3d(1, 1, 9);
+  }
+}
+}
