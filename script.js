@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     toggle2.addEventListener('click', () => {
         container.forEach(face => {
+            face.classList.remove('gray')
             face.classList.remove(colors[cindex]);
         });
         stop1.classList.remove('gray')

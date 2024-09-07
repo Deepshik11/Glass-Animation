@@ -257,7 +257,6 @@ body::-webkit-scrollbar {
   position: absolute;
   top: 0;
   left: 0;
-  /* background: var(--blue); */
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -314,10 +313,10 @@ body::-webkit-scrollbar {
   margin-top: 100px;
 }
 .cube{
-    animation: side-mobile-even 3s ease both;
+    animation: mobile-move ;
       animation-timeline: view(y);
 }
-@keyframes side-mobile-even {
+@keyframes mobile-move {
   0% {
     transform: rotate3d(0, 1, 0, -10deg) scale3d(1, 1, 9);
   }
